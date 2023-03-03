@@ -10,21 +10,37 @@ class ToDoList extends StatefulWidget {
   State<ToDoList> createState() => _MyWidgetState();
 }
 
+class cardListClass {
+  final String title;
+  final String desc;
+  cardListClass(this.title, this.desc);
+}
+
+final List<cardListClass> entries = [new cardListClass('title1', 'descrition 1'), new cardListClass('title1', 'descrition 3sdvnkrv ervjkn irjkewvndjknef djkv,ndf jkv,mdfn jdkfm, nijdk')];
 class _MyWidgetState extends State<ToDoList> {
   @override
   Widget build(BuildContext context) {
-    final List<Object> entries = [{ "title": 'title1', "des": 'please check the description here' }, { "title": 'title2', "des": "norvfdvfdbdfgvfgbdgbgbgfbgfbfgb" }, { "title": 'title3', "des": "part hervefvfvfvfg svknfvjfhvnfjkvdfnvkdfj" }];
     final listView = ListView.separated(
+      scrollDirection: Axis.horizontal,
     padding: const EdgeInsets.all(8),
+    shrinkWrap: true,
     itemCount: entries.length,
     itemBuilder: (BuildContext context, int index) {
-      return ToDoCard(title: '${entries[index]}');
+      return Container( child: Row(children: [ToDoCard(title: '${entries[index].title}', desc: '${entries[index].desc}')]), padding: EdgeInsets.only(left: 25),);
     },
     separatorBuilder: (BuildContext context, int index) => const Divider(),
   );
-    return Container(
-      margin: EdgeInsets.only(top: 50, left: 50, right: 50),
+  final addCard = Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [Padding(child: Icon(Icons.add), padding: EdgeInsets.only(right: 20, top: 15))],
+  );
+    return 
+    Container(child: Column(children: [
+      addCard,
+      Container(
+      margin: EdgeInsets.only(top: 20),
       child: listView,
-    );
+      height: 300,
+    )]));
   }
 }
