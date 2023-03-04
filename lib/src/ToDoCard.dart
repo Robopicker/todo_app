@@ -3,15 +3,26 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:todo_app/src/CheckBox.dart';
 
-class ToDoCard extends StatelessWidget {
-  final String title;
+class ToDoCard extends StatefulWidget {
+    final String title;
   final String desc;
   const ToDoCard({super.key, required this.title, required this.desc });
 
   @override
+  State<ToDoCard> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<ToDoCard> {
+    bool flag = false;
+  callback() {
+    setState(() {
+      flag = !flag;
+    });
+  }
+  @override
   Widget build(BuildContext context) {
-    final Widget Title = Text(title, style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black),);
-    final Dec = Container( child: Text(desc, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black)), width: 150,);
+    final Widget Title = Text(widget.title, style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black),);
+    final Dec = Container( child: Text(widget.desc, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black)), width: 150,);
     final DeleteIcon = GestureDetector(
       onTap: () => {
         print("sdvdfvfd")
@@ -23,9 +34,9 @@ class ToDoCard extends StatelessWidget {
         margin: EdgeInsets.only(top: 10),
       ),
     );
-    final buttonPanel = Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [DeleteIcon, CheckboxWidget() ],);
+    final buttonPanel = Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [DeleteIcon, CheckboxWidget(callback: callback) ],);
     return Container(
-      decoration: BoxDecoration( color: Color.fromARGB(255, 217, 210, 210), borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration( color: flag ? Colors.blue : Color.fromARGB(255, 217, 210, 210), borderRadius: BorderRadius.circular(20)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

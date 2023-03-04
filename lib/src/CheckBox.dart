@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const CheckboxWidget());
 
 class CheckboxWidget extends StatefulWidget {
-  const CheckboxWidget({super.key});
+  final Function callback;
+  const CheckboxWidget({super.key, required this.callback});
 
   @override
   State<CheckboxWidget> createState() => _MyWidgetState();
@@ -28,6 +28,7 @@ class _MyWidgetState extends State<CheckboxWidget> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked,
       onChanged: (bool ? value) => {
+        widget.callback(),
         setState(() {
           isChecked = value!;
         })

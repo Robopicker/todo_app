@@ -26,7 +26,7 @@ class _MyWidgetState extends State<ToDoList> {
     shrinkWrap: true,
     itemCount: entries.length,
     itemBuilder: (BuildContext context, int index) {
-      return Container( child: Row(children: [ToDoCard(title: '${entries[index].title}', desc: '${entries[index].desc}')]), padding: EdgeInsets.only(left: 25),);
+      return Container( child: Row(children: [ToDoCard(title: '${entries[index].title}', desc: '${entries[index].desc}' )]), padding: EdgeInsets.only(left: 25),);
     },
     separatorBuilder: (BuildContext context, int index) => const Divider(),
   );

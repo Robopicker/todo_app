@@ -29,7 +29,7 @@ class UserInfo extends StatelessWidget {
     borderRadius: BorderRadius.circular(20)
     ),);
     return Container(
-      padding: EdgeInsets.only(left: 25),
+      padding: EdgeInsets.only(left: 25, top: 20),
       
       child: Row(children: [UserData, Notification], mainAxisAlignment: MainAxisAlignment.spaceBetween,),
     );
