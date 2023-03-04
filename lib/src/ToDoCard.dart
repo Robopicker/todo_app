@@ -6,7 +6,9 @@ import 'package:todo_app/src/CheckBox.dart';
 class ToDoCard extends StatefulWidget {
     final String title;
   final String desc;
-  const ToDoCard({super.key, required this.title, required this.desc });
+  final Function delete;
+  final int index;
+  const ToDoCard({super.key, required this.title, required this.desc, required this.delete, required this.index });
 
   @override
   State<ToDoCard> createState() => _MyWidgetState();
@@ -25,7 +27,7 @@ class _MyWidgetState extends State<ToDoCard> {
     final Dec = Container( child: Text(widget.desc, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black)), width: 150,);
     final DeleteIcon = GestureDetector(
       onTap: () => {
-        print("sdvdfvfd")
+        widget.delete(widget.index)
       },
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.redAccent),
