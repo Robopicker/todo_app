@@ -23,8 +23,8 @@ class _MyWidgetState extends State<ToDoCard> {
   }
   @override
   Widget build(BuildContext context) {
-    final Widget Title = Text(widget.title, style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black),);
-    final Dec = Container( child: Text(widget.desc, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black)), width: 150,);
+    final Widget Title = Text( widget.title, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500, color: Colors.black),);
+    final Dec = Container( child: Text(widget.desc, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black), maxLines: 4,), width: 150,);
     final DeleteIcon = GestureDetector(
       onTap: () => {
         widget.delete(widget.index)
@@ -46,6 +46,7 @@ class _MyWidgetState extends State<ToDoCard> {
         Dec,
         buttonPanel,
       ]),
+      height: 200,
         padding: EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
         margin: EdgeInsets.only(bottom: 20),
     );

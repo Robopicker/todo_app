@@ -37,7 +37,7 @@ final Widget textSection = const Padding(
       home: Scaffold(
         body: SafeArea(child: Container(child: Column(children: [UserInfo(),
         ToDoList(), 
-        reduxTest()]), padding: EdgeInsets.only(top: 0),))
+        ]), padding: EdgeInsets.only(top: 0),))
     )
     );
   }
